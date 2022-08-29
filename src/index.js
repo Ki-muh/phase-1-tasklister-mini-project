@@ -3,23 +3,23 @@ document.addEventListener("DOMContentLoaded", () => {
   let form = document.querySelector('form');
   form.addEventListener('submit', event => {
     event.preventDefault();
-    addTask(event.target.new-task-description.value);
+    addTask(event.target.new_task_description.value);
     form.reset();
   })
 
 //
   function addTask(event) {
-  li = document.createElement('li');
-  li.innerText = event;
-
-  document.getElementById('tasks').appendChild('li');
-  li.remove();
-  }
+  let list = document.createElement('li');
+  list.innerText = event;
   let btn = document.createElement('button');
-  li.appendChild(btn);
-  removeTask(btn);
+  btn.textContent = ' x';
+  list.appendChild(btn);
+  btn.addEventListener('click', removeTask);
+
+  document.getElementById('tasks').appendChild(list);
+  }
 //
   function removeTask(event) {
-    event.addEventListener('click', () => e.parentNode.remove());
+    event.target.parentNode.remove();
   }
 });
